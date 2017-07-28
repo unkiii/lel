@@ -192,13 +192,13 @@
 				<a href="index.jsp"><button class="btn btnblack">Home</button></a>
 				
 				<span class="separator">|</span>
-				<a href="index.jsp"><button class="btn btnblack">-</button></a>
+				<a href="gallery.jsp"><button class="btn btnblack">Gallery IMG</button></a>
 				
 				<span class="separator">|</span>
-				<a href="index.jsp"><button class="btn btnblack">-</button></a>
+				<a href="videos.jsp"><button class="btn btnblack">Videos</button></a>
 				
 				<span class="separator">|</span>
-				<a href="index.jsp"><button class="btn btnblack">-</button></a>
+				<a href="progress.jsp"><button class="btn btnblack">Prcs</button></a>
 				
 				<span class="separator">|</span>				
 				<a href="map.jsp"><button class="btn btnblack">InfoMaps</button></a>

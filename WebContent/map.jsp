@@ -147,13 +147,63 @@
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrie5aQzwLxGgd8eLfnvasu3qLvTmBJcM&callback=myMap"></script>
        
-       
-       
+       <table class="marco table80">
+       	<tr id="txtorange">
+       			<td>
+	           		name
+	           </td>
+	           <td>
+	           		poblacion
+	           </td>
+	           <td>
+	           		pprin
+	           </td>
+	           <td>
+	           		 ilac
+	           </td>
+	           <td>
+	           		 pec
+	           </td>
+           </tr>
+
+
+            <%
+            ResultSet res = mDAO.obtenirCoords();
+            
+            while (res.next()) {
+           %>
+           <tr>
+           		<td>
+	           		 <%=res.getString("nombre")%>
+	           </td>
+	           <td>
+	           		 <%=res.getString("poblacion")%>
+	           </td>
+	           <td>
+	           		 <%=res.getString("pprinci")%>
+	           </td>
+	           <td>
+	           		 <%=res.getString("ilac")%>
+	           </td>
+	           <td>
+	           		 <%=res.getString("pec")%>
+	           </td>
+           </tr>
+           
+           
+           
+           <%
+       			 System.out.println( "-ppr: " + res.getString("pprinci") + " -ilac: " + res.getString("ilac") + " -pec: " + res.getString("pec"));
+			 %>
+			 
+			 
+			 
+			 <%} %>
+            </table>
             
             
             
-            
-            
+            <br><br><br><br>
             
             
             

@@ -27,7 +27,7 @@
 									
 									<td>
 										<i>Contraseña</i><br>
-										<input class="marco" type="text" id="input-26" value="<%=pass%>" required="" disabled>
+										<input class="marco" type="password" id="input-26" value="<%=pass%>" required="" disabled>
 									</td>
 									<td rowspan="3" WIDTH="300" HEIGHT="150" class="acenter">
 									
@@ -40,7 +40,7 @@
 								<tr>
 									<td>
 										<i>Fecha Nacimiento</i><br>
-										<input class="marco" type="text" id="input-27" value="<%=fnaci%>" required="" disabled>
+										<input class="marco" type="date" id="input-27" value="<%=fnaci%>" required="" disabled>
 									</td>
 									<td>
 										<i>Poblacion</i><br>
@@ -51,11 +51,11 @@
 								<tr>
 									<td>
 										<i>Numero Movil</i><br>
-										<input class="marco" type="text" id="input-30" value="<%=movil%>" required="" disabled>
+										<input class="marco" type="number" id="input-30" value="<%=movil%>" required="" disabled>
 									</td>
 									<td>
 										<i>E-Mail</i><br>
-										<input class="marco" type="text" id="input-29" value="<%=email%>" required="" disabled>
+										<input class="marco" type="email" id="input-29" value="<%=email%>" required="" disabled>
 									</td>
 									 
 									
@@ -95,7 +95,7 @@
 							<tr>
 								<td>
 									<i>ilac</i><br>
-									<input class="marco" type="text" id="input-34" value="<%=ilac%>" required="" disabled>
+									<input class="marco" type="number" id="input-34" value="<%=ilac%>" required="" disabled>
 						
 								</td>
 								
