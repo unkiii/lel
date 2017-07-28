@@ -16,6 +16,12 @@ public class UsuariDAO {
 		gestorDB = new GestorDB(Constants.SERVER, Constants.PORT, Constants.BD);
 	}
 
+	public ResultSet obtenirCoords() {
+		ResultSet rs = null;
+		rs = gestorDB.consultaRegistres("SELECT * from usuari");
+		return rs;
+	}
+
 	public List<String> validarLogin(Usuari usuari) throws SQLException {
 		ResultSet rs = null;
 		List<String> llista = new ArrayList<String>();
@@ -115,9 +121,21 @@ public class UsuariDAO {
 
 		String consultaSQL = "UPDATE usuari SET " + "nombre='" + usu.getNombre() + "'," + "pass='" + usu.getPasswd()
 				+ "'," + "poblacion='" + usu.getPoblacion() + "'," + "fechanacimiento='" + usu.getFechanacimiento()
-				+ "'," + "email='" + usu.getEmail() + "',movil='" + usu.getMovil() + "',fotperfil='"
-				+ usu.getFotperfil() + "',idbt='" + usu.getIdbt() + "',pprinci='" + usu.getPprinci() + "',ilac='"
-				+ usu.getIlac() + "',pec='" + usu.getPec() + "' " + "WHERE nif='" + NIF + "';";
+				+ "'," + "email='" + usu.getEmail() + "',movil='" + usu.getMovil() + "',altitud='" + usu.getAltitud()
+				+ "',lng='" + usu.getLng() + "',fotperfil='" + usu.getFotperfil() + "',idbt='" + usu.getIdbt()
+				+ "',pprinci='" + usu.getPprinci() + "',ilac='" + usu.getIlac() + "',pec='" + usu.getPec() + "' "
+				+ "WHERE nif='" + NIF + "';";
+
+		System.out.println(consultaSQL);
+		gestorDB.modificarRegistre(consultaSQL);
+	}
+
+	public void registrarUsuari(Usuari usu) throws SQLException {
+
+		String consultaSQL = "INSERT INTO usuari (nif, nombre, pass, idbt, pprinci, altitud, lng, poblacion) "
+				+ "VALUES ('" + usu.getNIF() + "', '" + usu.getNombre() + "', '" + usu.getPasswd() + "', '"
+				+ usu.getIdbt() + "', '" + usu.getPprinci() + "', '" + usu.getAltitud() + "', '" + usu.getLng() + "', '"
+				+ usu.getPoblacion() + "');";
 
 		System.out.println(consultaSQL);
 		gestorDB.modificarRegistre(consultaSQL);
@@ -147,8 +165,8 @@ public class UsuariDAO {
 			while (rs.next()) {
 				u = new Usuari(rs.getString("nombre"), rs.getString("pass"), rs.getString("poblacion"),
 						rs.getString("fechanacimiento"), rs.getString("email"), rs.getString("movil"),
-						rs.getString("fotperfil"), rs.getString("idbt"), rs.getString("pprinci"), rs.getString("ilac"),
-						rs.getString("pec"));
+						rs.getDouble("altitud"), rs.getDouble("lng"), rs.getString("fotperfil"), rs.getString("idbt"),
+						rs.getString("pprinci"), rs.getString("ilac"), rs.getString("pec"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

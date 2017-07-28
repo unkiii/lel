@@ -1,35 +1,27 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<% 
+	UsuariDAO mDAO=new UsuariDAO();
+	List<Usuari> llista = null;
+%>
+<%@include file="/includes/top.jsp" %>
 
-
-<%@ page import="controlador.*" %>
-<%@ page import="model.*" %>
-<%@ page import="servlet.*" %>
-
-
+<!-- in  -->
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	<html>
-		<head>
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-			<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-			<title>oPs!</title>
-			
-			<script type="text/javascript">
-				$(document).ready(function() {
-		    		setTimeout(function() {
-		        	$(".content").fadeOut(1500);
-		    		},1500);
-				});
-			</script>
-			<!-- START GOOGLE MAPS -->
-			
-			
-			<script>
+    
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+
+<script>
                 
                 function initMap() {
                     var latlon = new google.maps.LatLng(40.4167754, -3.7037901999999576);
-                    var mapOptions = {center: latlon, zoom: 12, rotateControl: true};
+                    var mapOptions = {center: latlon, zoom: 7, rotateControl: true};
                     var map = new google.maps.Map(document.getElementById('map'),mapOptions );
                     
                     
@@ -95,17 +87,97 @@
                 }
                 
             </script>
-			
-			
-			
-			
-			<!-- FINISH GOOGLE MAPS -->
-		</head>
+            
+            
+            
+            
+          
 
+<%
+            ResultSet rs = mDAO.obtenirCoords();
 
+			
+            
+        %>
 
-		<body>
-		
-		
-		
-		
+        <div style="height: 600px; width:900px; margin: 0 auto; color:black;" id="map" class="marco"></div>
+        <br><br>
+        
+        
+        <script>
+            function myMap() {
+                var opcions = {
+                    center: new google.maps.LatLng(40.4167754, -3.7037901999999576),
+                    zoom: 6,
+                };
+                var map = new google.maps.Map(document.getElementById('map'), opcions);
+               
+                var locations = [
+                    <% 
+                    while (rs.next()) {%>
+                    ['<%=rs.getString("poblacion")%>','<%=rs.getString("altitud")%>','<%=rs.getString("lng")%>'],
+                    
+                <% System.out.println( "-Nom: " + rs.getString("poblacion") + " -Altitud: " + rs.getString("altitud") + " -Longitud: " + rs.getString("lng"));
+        			}%>
+                    
+                    ];
+                   
+              
+
+                
+                var infowindow = new google.maps.InfoWindow();
+                var marker, j;
+                for(j=0; j<locations.length; j++){
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[j][1], locations[j][2]),
+                        map: map
+                    });
+                    
+                    google.maps.event.addListener(marker, 'click', (function(marker,j){
+                        return function(){
+                            infowindow.setContent('<IMG BORDER="0" ALIGN="Left" SRC="/images/mundo.jpg" height="40px">'+locations[j][0]);
+                            infowindow.open(map, marker);
+                        }
+                    })(marker,j));
+                }
+                
+            }            
+
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrie5aQzwLxGgd8eLfnvasu3qLvTmBJcM&callback=myMap"></script>
+       
+       
+       
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+ 
+ 
+<%@include file="/includes/bot.jsp" %>

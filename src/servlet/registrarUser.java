@@ -15,8 +15,8 @@ import model.UsuariDAO;
 /**
  * Servlet implementation
  */
-@WebServlet(name = "modificarUser", urlPatterns = { "/modificarUser" })
-public class modificarUser extends HttpServlet {
+@WebServlet(name = "registrarUser", urlPatterns = { "/registrarUser" })
+public class registrarUser extends HttpServlet {
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public class modificarUser extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public modificarUser() {
+	public registrarUser() {
 	}
 
 	/**
@@ -38,45 +38,36 @@ public class modificarUser extends HttpServlet {
 		UsuariDAO uDAO = new UsuariDAO();
 		Usuari u = new Usuari();
 
-		System.out.println("HELLOOOO modificar");
+		System.out.println("HELLOOOO REGISTRAR");
 
-		String nif = (String) request.getParameter("uNif");
+		String nif = (String) request.getParameter("input-21");
 		String nombre = (String) request.getParameter("input-25");
 		String pass = (String) request.getParameter("input-26");
-		String años = (String) request.getParameter("input-27");
 		String poblacion = (String) request.getParameter("input-28");
-		String movil = (String) request.getParameter("input-30");
-		String email = (String) request.getParameter("input-29");
-		String imagen = (String) request.getParameter("input-20");
 		String idbt = (String) request.getParameter("input-32");
 		String pprinci = (String) request.getParameter("input-33");
-		String ilac = (String) request.getParameter("input-34");
-		String pec = (String) request.getParameter("input-35");
 		double lat = Double.parseDouble(request.getParameter("alti"));
 		double lon = Double.parseDouble(request.getParameter("longi"));
-
+		System.out.println("EL DNI EN SERLVET ---> " + nif);
+		u.setNIF(nif);
 		u.setNombre(nombre);
 		u.setPasswd(pass);
-		u.setFechanacimiento(años);
-		u.setPoblacion(poblacion);
-		u.setMovil(movil);
-		u.setEmail(email);
+		String poble = poblacion.replaceAll(", ", "/");
+		u.setPoblacion(poble);
 		u.setAltitud(lat);
 		u.setLng(lon);
-		u.setFotperfil(imagen);
 		u.setIdbt(idbt);
 		u.setPprinci(pprinci);
-		u.setIlac(ilac);
-		u.setPec(pec);
 
 		try {
-			uDAO.modificarUsuari(nif, u);
+			uDAO.registrarUsuari(u);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Error - modificarUser - GUARDAR");
+			System.out.println("Error - REGISTRAR - GUARDAR");
+			System.out.println("El error es: " + e);
 		}
 
-		response.sendRedirect("/registre/perfilVer.jsp");
+		response.sendRedirect("/registre/login.jsp");
 	}
 
 }

@@ -12,6 +12,8 @@ public class Usuari {
 	private String fechanacimiento;
 	private String email;
 	private String movil;
+	private double altitud;
+	private double lng;
 	private String fotperfil;
 	private String idbt;
 	private String pprinci;
@@ -38,19 +40,37 @@ public class Usuari {
 	}
 
 	public Usuari(String nombre, String pass, String poblacion, String fechanacimiento, String email, String movil,
-			String fotperfil, String idbt, String pprinci, String ilac, String pec) {
+			double altitud, double lng, String fotperfil, String idbt, String pprinci, String ilac, String pec) {
 		super();
 		this.nombre = nombre;
 		this.passwd = pass;
 		this.poblacion = poblacion;
 		this.fechanacimiento = fechanacimiento;
 		this.email = email;
+		this.altitud = altitud;
+		this.lng = lng;
 		this.movil = movil;
 		this.fotperfil = fotperfil;
 		this.idbt = idbt;
 		this.pprinci = pprinci;
 		this.ilac = ilac;
 		this.pec = pec;
+	}
+
+	public double getAltitud() {
+		return altitud;
+	}
+
+	public void setAltitud(double lat) {
+		this.altitud = lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lon) {
+		this.lng = lon;
 	}
 
 	public String getPprinci() {

@@ -33,7 +33,7 @@ try{
   <%} %>
   
     <div class="acenter">
-    	No tienes una cuenta? Registrate.
+    	No tienes una cuenta? <a href="/registre/registrar.jsp">Registrate.</a>
     </div>
 
   

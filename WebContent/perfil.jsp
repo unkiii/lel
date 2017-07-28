@@ -90,6 +90,22 @@
 				</td>
 				<td></td>
 			</tr>
+			<tr hidden >
+
+				<td>           
+					<label for="text1" class="control-label col-lg-6">Altitud</label>
+					</td><td>
+					<input type="text" id="textalti" name="alti" placeholder="Altitud" class="form-control">
+				</td>
+			</tr>
+			<tr hidden >
+			<td><br><br><br></td>
+				<td>           
+					<label for="text1" class="control-label col-lg-6">Longitud</label>
+					</td><td>
+					<input type="text" id="textlongo" name="longi" placeholder="Longitud" class="form-control">
+				</td>
+			</tr>
 		</table>
 		</div>		
 		

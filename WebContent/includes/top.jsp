@@ -152,6 +152,8 @@
 			String pobla = u.getPoblacion();
 			String email = u.getEmail();
 			String movil = u.getMovil();
+			double latitud = u.getAltitud();
+			double lng = u.getLng();
 			String fotperfil = u.getFotperfil();
 			String idbt = u.getIdbt();
 			String pprinci = u.getPprinci();
@@ -188,11 +190,20 @@
 		<div class="menu acenter">
 			<span class="bordergreen">
 				<a href="index.jsp"><button class="btn btnblack">Home</button></a>
+				
 				<span class="separator">|</span>
-				<button class="btn btnblack">Black</button><span class="separator">|</span>
-				<button class="btn btnblack">Black</button><span class="separator">|</span>
-				<button class="btn btnblack">Black</button><span class="separator">|</span>
-				<button class="btn btnblack">Black</button><span class="separator">|</span>
+				<a href="index.jsp"><button class="btn btnblack">-</button></a>
+				
+				<span class="separator">|</span>
+				<a href="index.jsp"><button class="btn btnblack">-</button></a>
+				
+				<span class="separator">|</span>
+				<a href="index.jsp"><button class="btn btnblack">-</button></a>
+				
+				<span class="separator">|</span>				
+				<a href="map.jsp"><button class="btn btnblack">InfoMaps</button></a>
+				
+				<span class="separator">|</span>
 				<a href="perfilVer.jsp"><button class="btn btnblack">Perfil</button></a>
 			</span>
 		</div>
