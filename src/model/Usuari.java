@@ -14,6 +14,7 @@ public class Usuari {
 	private String movil;
 	private String fotperfil;
 	private String idbt;
+	private String pprinci;
 	private String ilac;
 	private String pec;
 
@@ -36,17 +37,99 @@ public class Usuari {
 		this.nom = nom;
 	}
 
-	public Usuari(String nombre, String poblacion, String fechanacimiento, String email, String movil, String fotperfil,
-			String idbt, String ilac, String pec) {
+	public Usuari(String nombre, String pass, String poblacion, String fechanacimiento, String email, String movil,
+			String fotperfil, String idbt, String pprinci, String ilac, String pec) {
 		super();
 		this.nombre = nombre;
+		this.passwd = pass;
 		this.poblacion = poblacion;
 		this.fechanacimiento = fechanacimiento;
 		this.email = email;
 		this.movil = movil;
 		this.fotperfil = fotperfil;
 		this.idbt = idbt;
+		this.pprinci = pprinci;
 		this.ilac = ilac;
+		this.pec = pec;
+	}
+
+	public String getPprinci() {
+		return pprinci;
+	}
+
+	public void setPprinci(String pprinci) {
+		this.pprinci = pprinci;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getPoblacion() {
+		return poblacion;
+	}
+
+	public void setPoblacion(String poblacion) {
+		this.poblacion = poblacion;
+	}
+
+	public String getFechanacimiento() {
+		return fechanacimiento;
+	}
+
+	public void setFechanacimiento(String fechanacimiento) {
+		this.fechanacimiento = fechanacimiento;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMovil() {
+		return movil;
+	}
+
+	public void setMovil(String movil) {
+		this.movil = movil;
+	}
+
+	public String getFotperfil() {
+		return fotperfil;
+	}
+
+	public void setFotperfil(String fotperfil) {
+		this.fotperfil = fotperfil;
+	}
+
+	public String getIdbt() {
+		return idbt;
+	}
+
+	public void setIdbt(String idbt) {
+		this.idbt = idbt;
+	}
+
+	public String getIlac() {
+		return ilac;
+	}
+
+	public void setIlac(String ilac) {
+		this.ilac = ilac;
+	}
+
+	public String getPec() {
+		return pec;
+	}
+
+	public void setPec(String pec) {
 		this.pec = pec;
 	}
 

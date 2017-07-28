@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Registre d'hores</title>
+<%@include file="/includes/toplogin.jsp" %>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-    		setTimeout(function() {
-        	$(".content").fadeOut(1500);
-    		},1500);
-		});
-	</script>
-	
-</head>
-
-<body>
 <%
 int incorrecte;
 try{
@@ -22,27 +7,39 @@ try{
 }catch(Exception e){
 	incorrecte = 0;
 }
-
-
 %>
-  <div class="login-page">
-  <div class="form">
-  <h2>registre</h2>
-    <form method="Post" action="login" name="frmLogin">
-      <input type="text" name="dni" placeholder="D.N.I."/>
-      <input type="password" name="password" placeholder="Contrasenya"/>
-      <input type="submit" value="login" class="boto" />
+<br><br>
+  <h2>Login</h2>
+  
+    <form method="Post" action="login" name="frmLogin" class="acenter">
+    	<i>Name</i><br>
+    	<input type="text" name="dni" placeholder="D.N.I." class="marco" required/>
+      <br><br>
+    	<i>Password</i><br>
+    	<input type="password" name="password" placeholder="Contrasenya" class="marco" required/>
+
+    	<br><br>
+    	<div class="acenter ">
+			<input type="submit" value="login" class="btnlong btnblack marco" />
+		</div>
+
     </form>
-  </div>
-  <% if(incorrecte == 1){ %>
-  	<div class="content" id="alerta">
-  		Error, <strong>fail </strong>
+    
+    <br><br><br>
+    <% if(incorrecte == 1){ %>
+  	<div class="error acenter" id="alerta">
+  		Error, <strong>Los datos introducidos son Incorrectos. </strong>
   	</div>
   <%} %>
-</div>
+  
+    <div class="acenter">
+    	No tienes una cuenta? Registrate.
+    </div>
+
+  
+
 
 	<script src="/js/login.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
     
-</body>
-</html>
+<%@include file="/includes/bot.jsp" %>

@@ -1,291 +1,166 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>oPs!</title>
-
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Fantasy World Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- gallery -->
-<link rel="stylesheet" href="css/lightGallery.css" type="text/css" media="all" />
-<!-- //gallery -->
-<!-- font-awesome icons -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
-
-<!-- //font-awesome icons -->
-<link href="//fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-<link href="//fonts.googleapis.com/css?family=Jura:300,400,500,600" rel="stylesheet">
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<%@include file="/includes/top.jsp" %>
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
-<script type="text/javascript">
-	$(document).ready(function() {
-   		setTimeout(function() {
-       	$(".content").fadeOut(1500);
-   		},1500);
-	});
+<script language=JavaScript>
+	function cambiaPalabra() {
+	document.algunNombre.texto.value="Adios";
+	}
 </script>
+
+	
+
+<h2>Modifica tu Perfil</h2>
+
+<h3>Datos Personales</h3>
+<hr>
+	
+<br>
+<form method="post" name="mForm" action="/registre/modificarUser" onKeypress="if(event.keyCode == 13) event.returnValue = false;">
+
+	<div class="table40">
+	
+	<input class="marco" type="text" id="uNif" name="uNif"  value="<%=usuNif%>" hidden>
 	
 	
-</head>
-<body>
-<!-- Permetre acces nomes si hi ha una sessio -->
-<%
-	HttpSession sesion=request.getSession(); 
-	String nif=null;
-	String usuNif=null;
-	int permis=0;
-	try{
-		if(sesion.getAttribute("nif") == null){	
-			session.invalidate();
-			response.sendRedirect("login.jsp");
-		}
+	
+		<table>
+			<tr class="right">
+			
+				<td WIDTH="300">
+					<i>Nombre </i>
+					</td><td>
+					<input class="marco" type="text" id="input-25" name="input-25"  value="<%=nombre%>" required="" >
+				</td>
+				<td rowspan=6><div style="height: 400px; width:500px; border: 2px darkcyan solid; margin: 0 auto;" id="map"></div></td>
+			</tr>
+			<tr class="right">
+				<td>
+					<i>Contraseña </i>
+					</td><td>
+					<input class="marco" type="text" id="input-26" name="input-26" value="<%=pass%>" required="" >
+				</td>
+				<td></td>
+			</tr>
+			<tr class="right">
+				<td>
+					<i>Cumpleaños </i>
+					</td><td>
+					<input class="marco" type="date" id="input-27" name="input-27" value="<%=fnaci%>" required="" >
+				</td>
+				<td></td>
+			</tr>
+			<tr class="right">
+				<td>
+					<i>Poblacion </i>
+					</td><td>
+					
+					
+			
+            <input id="address" name="input-28" type="textbox" value="<%=pobla%>" placeholder="Buscar una ciudad" class="form-control marco" onchange="initMap()" required>
+              <small><i>Seleccione y pulse Enter.</i></small>
 
-		usuNif = sesion.getAttribute("nif").toString();
-		permis = Integer.parseInt(sesion.getAttribute("permis").toString());
+                    <input type="hidden" id="hiddenLat" name="lat"/>
+                    <input type="hidden" id="hiddenLon" name="lon"/>
+                    <input type="hidden" id="hiddenNom" name="ciudad"/>
+                    
+                    <!--
+                    </td><td>
+                     <input id="submit2" type="submit" value="Seleccionar"/> 
+                    </td>
+                    -->
+                    
+                    </td>
+                   
+					
+			</tr>
+			<tr class="right">
+				<td>
+					<i>Num. Movil </i>
+					</td><td>
+					<input class="marco" type="text" id="input-30" name="input-30" value="<%=movil%>" required="" >
+				</td>
+				<td></td>
+			</tr>
+			<tr class="right">
+				<td>
+					<i>E-Mail </i>
+					</td><td>
+					<input class="marco" type="text" id="input-29" name="input-29" value="<%=email%>" required="" >
+				</td>
+				<td></td>
+			</tr>
+		</table>
+		</div>		
 		
-		String sessionID = null;
-		Cookie[] cookies = request.getCookies();
-		if(cookies != null){
-			for(Cookie cookie : cookies){
-				if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
-			}
-		}
-	}catch(Exception e){}
-	finally{}
-		
-%>
-
-
-<span class="logout-spn" >                
-<form method="post" action="Logout" name="logoutForm">
-<a href="javascript: submitform()" style="color:#fff;">LOGOUT<br></a>
-</form>
-
-<p><strong>Welcome <%=usuNif%></strong></p>
-<script type="text/javascript">
-function submitform(){
-  document.logoutForm.submit();
-}
-</script>
-</span>
-<a href="index.jsp" class="button">Go to Home</a>
-	<div class="mail" id="mail">
-		<div class="container">
-			<h3 class="w3l_head w3l_head1">Perfil</h3>
-			<p class="w3ls_head_para w3ls_head_para1">Modifica tu perfil</p>
-			<div class="w3_mail_grids">
-				<form action="#" method="post">
-					<div class="col-md-6 w3_agile_mail_grid">
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-25" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-25">
-								<span class="input__label-content input__label-content--ichiro">Nombre</span>
-							</label>
-						</span>
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-26" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-26">
-								<span class="input__label-content input__label-content--ichiro">Contraseña</span>
-							</label>
-						</span>
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-27" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-27">
-								<span class="input__label-content input__label-content--ichiro">Fecha Nacimiento</span>
-							</label>
-						</span>
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-28" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-28">
-								<span class="input__label-content input__label-content--ichiro">Poblacion</span>
-							</label>
-						</span>
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-29" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-29">
-								<span class="input__label-content input__label-content--ichiro">E-Mail</span>
-							</label>
-						</span>
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-30" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-30">
-								<span class="input__label-content input__label-content--ichiro">Numero Movil</span>
-							</label>
-						</span>
-						
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-32" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-32">
-								<span class="input__label-content input__label-content--ichiro">idbt</span>
-							</label>
-						</span>
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-33" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-33">
-								<span class="input__label-content input__label-content--ichiro">pprinci</span>
-							</label>
-						</span>
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-34" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-34">
-								<span class="input__label-content input__label-content--ichiro">ilac</span>
-							</label>
-						</span>
-						<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-35" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-35">
-								<span class="input__label-content input__label-content--ichiro">pec</span>
-							</label>
-						</span>
-						
-					</div>
-					
-					
-						
-					<div class="col-md-6 w3_agile_mail_grid">
-					<textarea name="Message" placeholder="Imagen" required=""></textarea>
-					<span class="input input--ichiro">
-							<input class="input__field input__field--ichiro" type="text" id="input-31" placeholder=" " required="">
-							<label class="input__label input__label--ichiro" for="input-31">
-								<span class="input__label-content input__label-content--ichiro">Foto Perfil</span>
-							</label>
-						</span>
-					
-						<textarea name="Message" placeholder="Your Message" required=""></textarea>
-						<span class="input__label-content input__label-content--ichiro"></span>
-						<span class="input__label-content input__label-content--ichiro"></span>
-						<input type="submit" value="Modificar">
-					</div>
-					<div class="clearfix"> </div>
-				</form>
+		<br><br><br>
+				
+				
+		<h3>Foto de Perfil</h3>
+			<hr>				
+		<div class="table40">
+			<img class="perfil" src="<%=fotperfil%>" width="120" height="90" style="margin-top:30px;"/>
+			<div class="acenter ">
+				<i>Cambiar URL de la imagen:</i>
+				<input size="50px" class="marco" type="text" id="input-20" name="input-20"  value="<%=fotperfil%>" required="" >
 			</div>
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--banner Slider starts Here-->
-<script src="js/jquery-2.2.3.min.js"></script> 
-						<script src="js/responsiveslides.min.js"></script>
-							<script>
-								// You can also use "$(window).load(function() {"
-								$(function () {
-								  // Slideshow 4
-								  $("#slider3").responsiveSlides({
-									auto: true,
-									pager:false,
-									nav:true,
-									speed: 500,
-									namespace: "callbacks",
-									before: function () {
-									  $('.events').append("<li>before event fired.</li>");
-									},
-									after: function () {
-									  $('.events').append("<li>after event fired.</li>");
-									}
-								  });
-							
-								});
-							 </script>
-							 <!-- js -->
-<!-- start-smoth-scrolling -->
-	<script src="js/lightGallery.js"></script>
-	<script>
-    	 $(document).ready(function() {
-			$("#lightGallery").lightGallery({
-				mode:"fade",
-				speed:800,
-				caption:true,
-				desc:true,
-				mobileSrc:true
-			});
-		});
-    </script>
-
-<script src="js/owl.carousel.js"></script> 
-<link href="css/owl.theme.css" rel="stylesheet">
- <link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
-<script>
-$(document).ready(function() { 
-	$("#owl-demo").owlCarousel({
- 
-		autoPlay: 3000, //Set AutoPlay to 3 seconds
-		  autoPlay : true,
-		   navigation :true,
-
-		items : 4,
-		itemsDesktop : [640,5],
-		itemsDesktopSmall : [414,4]
- 
-	});
+		</div>			
+			
+		<br><br><br>
 	
-}); 
+		<h3>Otra Info</h3>
+		<hr>
+		<br>
+			
+			
+			
+		<table class="table20">
+			<tr>
+				<td>
+					<i>idbt</i>	
+					</td><td>
+					<input class="marco" type="text" id="input-32" name="input-32" value="<%=idbt%>" required="" >
+				</td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<i>pprinci</i>
+					</td><td>
+					<input class="marco" type="text" id="input-33" name="input-33" value="<%=pprinci%>" required="" >
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<td>
+					<i>ilac</i>
+					</td><td>
+					<input class="marco" type="text" id="input-34" name="input-34" value="<%=ilac%>" required="" >
+		
+				</td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<i>pec</i>
+					</td><td>
+					<input class="marco" type="text" id="input-35" name="input-35" value="<%=pec%>" required="" >
+				</td>
+			</tr>
+			
+		</table>
+		
+		<br><br><br><br><br>
+			
+		<div class="acenter ">
+			<a href="perfil.jsp" ><button class="btnlong btnblack marco">Guardar Cambios</button></a>
+		</div>
+	
+	</form>
+
+<br><br><br>
+
+
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrie5aQzwLxGgd8eLfnvasu3qLvTmBJcM&libraries=places&callback=initMap">
 </script>
-<!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
-</script>
-<!-- start-smoth-scrolling -->
-<!-- //js -->
-	<script src="js/bootstrap.js"></script>
-<!-- //for bootstrap working -->
-<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-			*/
-								
-			$().UItoTop({ easingType: 'easeOutQuart' });
-								
-			});
-	</script>
-<!-- //here ends scrolling icon -->
-</body>
-</html>
+            
+<%@include file="/includes/bot.jsp" %>
+

@@ -111,17 +111,19 @@ public class UsuariDAO {
 		return u;
 	}
 
+	public void modificarUsuari(String NIF, Usuari usu) throws SQLException {
+
+		String consultaSQL = "UPDATE usuari SET " + "nombre='" + usu.getNombre() + "'," + "pass='" + usu.getPasswd()
+				+ "'," + "poblacion='" + usu.getPoblacion() + "'," + "fechanacimiento='" + usu.getFechanacimiento()
+				+ "'," + "email='" + usu.getEmail() + "',movil='" + usu.getMovil() + "',fotperfil='"
+				+ usu.getFotperfil() + "',idbt='" + usu.getIdbt() + "',pprinci='" + usu.getPprinci() + "',ilac='"
+				+ usu.getIlac() + "',pec='" + usu.getPec() + "' " + "WHERE nif='" + NIF + "';";
+
+		System.out.println(consultaSQL);
+		gestorDB.modificarRegistre(consultaSQL);
+	}
+
 	/*
-	 * public void modificarUsuari(String NIF, Usuari usu) throws SQLException {
-	 * String consultaSQL = "UPDATE usuari SET NIF='" + usu.getNIF() + "'," +
-	 * "password='" + usu.getPasswd() + "'," + "nom='" + usu.getNom() + "'," +
-	 * "primer_cognom='" + usu.getCognom1() + "'," + "segon_cognom='" +
-	 * usu.getCognom2() + "',mail='" + usu.getMail() + "',permisos=" +
-	 * usu.getPermis() + ",id_centre=" + usu.getIdCentre() + " " + "WHERE nif='"
-	 * + NIF + "';"; System.out.println(consultaSQL);
-	 * gestorDB.modificarRegistre(consultaSQL); }
-	 * 
-	 * 
 	 * public Object[] consultaNifs(String nif) { ResultSet rs = null; String
 	 * consultaSQL = "SELECT NIF FROM usuari"; rs =
 	 * gestorDB.consultaRegistres(consultaSQL); ArrayList<Object> fila = new
@@ -143,9 +145,10 @@ public class UsuariDAO {
 		Usuari u = null;
 		try {
 			while (rs.next()) {
-				u = new Usuari(rs.getString("nombre"), rs.getString("poblacion"), rs.getString("fechanacimiento"),
-						rs.getString("email"), rs.getString("movil"), rs.getString("fotperfil"), rs.getString("idbt"),
-						rs.getString("ilac"), rs.getString("pec"));
+				u = new Usuari(rs.getString("nombre"), rs.getString("pass"), rs.getString("poblacion"),
+						rs.getString("fechanacimiento"), rs.getString("email"), rs.getString("movil"),
+						rs.getString("fotperfil"), rs.getString("idbt"), rs.getString("pprinci"), rs.getString("ilac"),
+						rs.getString("pec"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
