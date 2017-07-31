@@ -54,8 +54,15 @@ public class login extends HttpServlet {
 				session.setAttribute("permis", usu.getPermis());
 
 				uDAO.tancarConn();
-				// redirijo a página con información de login exitoso
-				response.sendRedirect("index.jsp");
+				if (usu.getPermis() != 0) {
+					// redirijo a página con información de login exitoso
+					response.sendRedirect("index.jsp");
+				} else {
+					System.out.println("no te permisos --> 0");
+					session.setAttribute("permisos", 0);
+					session.setAttribute("correcte", 0);
+					response.sendRedirect("login.jsp");
+				}
 
 			}
 		} catch (Exception e) {

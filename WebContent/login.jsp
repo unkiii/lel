@@ -2,8 +2,11 @@
 
 <%
 int incorrecte;
+int lopermis = 0;
 try{
 	incorrecte = Integer.parseInt(session.getAttribute("correcte").toString());
+	lopermis = Integer.parseInt(session.getAttribute("permisos").toString());
+	
 }catch(Exception e){
 	incorrecte = 0;
 }
@@ -26,12 +29,20 @@ try{
     </form>
     
     <br><br><br>
-    <% if(incorrecte == 1){ %>
-  	<div class="error acenter" id="alerta">
-  		Error, <strong>Los datos introducidos son Incorrectos. </strong>
-  	</div>
-  <%} %>
-  
+    
+    <%if(incorrecte == 0 && lopermis == 0){ %>
+	  	<div class="error acenter" id="alerta">
+	  		Error, <strong> No tienes permisos para acceder al sitio web. <br> ponte en contacto con un administrador para que te active la cuenta. </strong>
+	  	</div>
+    <%} %>
+    
+    <%if(incorrecte == 1){ %>
+	  	<div class="error acenter" id="alerta">
+	  		Error, <strong>Los datos introducidos no son correctos. </strong>
+	  	</div>
+  	 
+  	<%} %>
+  	
     <div class="acenter">
     	No tienes una cuenta? <a href="/registre/registrar.jsp">Registrate.</a>
     </div>
