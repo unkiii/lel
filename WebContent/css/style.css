@@ -90,11 +90,28 @@ cursiva{
   transition: opacity 500ms;
 }
 
+.imgg {
+	witdh:200px;
+	height:200px;
+}
 
-
-
-
-
+.zoom{
+     /* Aumentamos la anchura y altura durante 2 segundos */
+     transition: width 2s, height 2s, transform 2s;
+     -moz-transition: width 2s, height 2s, -moz-transform 2s;
+     -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+     -o-transition: width 2s, height 2s,-o-transform 2s;
+ }
+ .zoom:hover{
+     /* tranformamos el elemento al pasar el mouse por encima al doble de
+        su tamaño con scale(2). */
+     transform : scale(1.8);
+     -moz-transform : scale(1.8);      /* Firefox */
+     -webkit-transform : scale(1.8);   /* Chrome - Safari */
+     -o-transform : scale(1.8);        /* Opera */
+     
+ }
+    
 
 
 /* Marcos */
@@ -158,6 +175,9 @@ cursiva{
 }
 .pad30 {
 	padding: 30px;
+}
+.pad60 {
+	padding: 60px;
 }
 .separator {
 	color:white;
@@ -225,6 +245,12 @@ cursiva{
 .table80 {
 	margin:0 auto;
 	width:80%;
+	text-align:center;
+}
+
+.table99 {
+	margin:0 auto;
+	width:99%;
 	text-align:center;
 }
 
