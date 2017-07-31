@@ -9,22 +9,26 @@
 <br>
 
 <div class="acenter2 pad10 bgslider">
-
-
+	<h3>titulo</h3>
+	<hr>
 	<span class="pad30">
-		<img src="images/s6.jpg" class="slider fslider"/>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/0r6C3z3TEKw" frameborder="0" allowfullscreen></iframe>
 	</span>
-	
-	<span class="pad30">
-		<img src="images/s7.jpg" class="slider fslider"/>
-	</span>
-	
-	<span class="pad30">
-		<img src="images/s2.jpg" class="slider fslider"/>
-	</span>
-	
+	<br>
+	Subido por QQQQ el día 23/10/17
 </div>
 
+<br><br>
+
+<div class="acenter2 pad10 bgslider">
+	<h3>titulo</h3>
+	<hr>
+	<span class="pad30">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/0r6C3z3TEKw" frameborder="0" allowfullscreen></iframe>
+	</span>
+	<br>
+	Subido por QQQQ el día 23/10/17
+</div>
 
 
 
