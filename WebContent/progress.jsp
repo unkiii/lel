@@ -5,7 +5,7 @@
 
 <!-- in  -->
 
-<h2>Progress</h2>
+<h2>Pssss</h2>
 <br>
 
 
@@ -29,12 +29,53 @@
 		<td>
 			5
 		</td>
+		<td>
+			6
+		</td>
+		<td>
+			7
+		</td>
+		<td>
+			8
+		</td>
+		<td>
+			9
+		</td>
+		<td>
+			10
+		</td>
 	</tr>
 	
 	
 	<tr>
 		<td>
-			Mr Potato
+			Mr Potato1
+		</td>
+		<td>
+			X
+		</td>
+		<td>
+			X
+		</td>
+		<td>
+			X
+		</td>
+		<td>
+			X
+		</td>
+		<td>
+			X
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Mr Potato2
+		</td>
+		<td>
+			X
+		</td>
+		<td>
+			X
 		</td>
 		<td>
 			X

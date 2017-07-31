@@ -53,7 +53,6 @@ public class login extends HttpServlet {
 				session.setAttribute("nif", usu.getNIF());
 				session.setAttribute("permis", usu.getPermis());
 
-				uDAO.tancarConn();
 				if (usu.getPermis() != 0) {
 					// redirijo a página con información de login exitoso
 					response.sendRedirect("index.jsp");
@@ -63,6 +62,7 @@ public class login extends HttpServlet {
 					session.setAttribute("correcte", 0);
 					response.sendRedirect("login.jsp");
 				}
+				uDAO.tancarConn();
 
 			}
 		} catch (Exception e) {

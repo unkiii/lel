@@ -32,7 +32,7 @@ try{
     
     <%if(incorrecte == 0 && lopermis == 0){ %>
 	  	<div class="error acenter" id="alerta">
-	  		Error, <strong> No tienes permisos para acceder al sitio web. <br> ponte en contacto con un administrador para que te active la cuenta. </strong>
+	  		Error, <strong> No tienes permisos para acceder al sitio web. <br> ponte en contacto con un administrador. </strong>
 	  	</div>
     <%} %>
     

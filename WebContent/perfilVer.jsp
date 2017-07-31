@@ -10,7 +10,7 @@
 
 				
 	
-					<br><br><br>
+					<br>
 					
 					
 						<h3>Datos Personales</h3>
@@ -107,10 +107,10 @@
 							
 						</table>
 						
-							<br><br><br>
-							
-							<br><br><br>
+							<br><br><br><br>
+
 								<hr>
+								<br><br><br><br>
 						<div class="acenter ">
 							<a href="perfil.jsp" ><button class="btnlong btnblack marco">Modificar</button></a>
 						</div>
